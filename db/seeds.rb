@@ -1,7 +1,5 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+# Init Dictionary
+Dictionary.create!(name: 'Oxford Dictionaries', hompage: 'https://www.oxforddictionaries.com/',
+  api_homepage: 'https://developer.oxforddictionaries.com/')
+Dictionary.create!(name: 'Words API', hompage: 'https://www.wordsapi.com/',
+  api_homepage: 'https://www.wordsapi.com/')

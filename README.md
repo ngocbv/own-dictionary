@@ -3,9 +3,11 @@
 Dictionaries:
   - name: unique, string
   - homepage
+  - api_homepage
 
 Words:
   - name: string, unique
+  - updated: bool
 
 Meanings:
   - word_id
@@ -22,6 +24,16 @@ Pronunciations:
   - dialects: array of dialects
   - phonetic_notation
 
+Users:
+  - username
+  - email
+  - fullname
+  - encrypted_password
+
+FavoriteWords:
+  - user_id
+  - word_id
+
 Sentences:
   - word_id
   - regions: arrays of regions
@@ -29,8 +41,10 @@ Sentences:
 
 Synonyms:
   - word_id
+  - dictionary_id
   - content: array of synonyms
 
 Antonyms:
   - word_id
+  - dictionary_id
   - content: array of antonyms
