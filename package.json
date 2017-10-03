@@ -1,5 +1,7 @@
 {
   "name": "own-dictionary",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "jquery": "^3.2.1"
+  }
 }

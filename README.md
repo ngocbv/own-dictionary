@@ -7,7 +7,8 @@ Dictionaries:
 
 Words:
   - name: string, unique
-  - updated: bool
+  - updated: bool, default: false
+  - language
 
 Meanings:
   - word_id
@@ -16,13 +17,14 @@ Meanings:
 
 Examples:
   - meaning_id
-  - content: array of examples
+  - content
 
 Pronunciations:
   - word_id
   - audio_link
   - dialects: array of dialects
   - phonetic_notation
+  - phonetic_spelling
 
 Users:
   - username
@@ -33,6 +35,11 @@ Users:
 FavoriteWords:
   - user_id
   - word_id
+
+TranslationHistories:
+  - user_id
+  - word_id
+  - time: datetime
 
 Sentences:
   - word_id
