@@ -9,6 +9,5 @@ class HomeController < ApplicationController
     @word = word || Word.find_by(name: params['query'])
     @pronunciation = @word ? @word.pronunciation : {}
     @meanings = @word ? @word.meanings : []
-    @examples = @word ? @word.examples : []
   end
 end

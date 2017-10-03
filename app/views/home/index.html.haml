@@ -10,10 +10,11 @@
       -# @word = Word.find_by(name: params['query'])
       -# @pronunciation = word.pronunciation
       -# @meanings = word.meanings
-      -# @examples = word.examples
       - if @word
         %h2= @word.name
         %span= @pronunciation.try(:phonetic_spelling)
         - if @meanings.present?
-          - @meanings.each do |meaning|
-            %p= meaning.definition.capitalize
+          %ul
+            - @meanings.each do |meaning|
+              %li= meaning.definition.capitalize
+              = meaning.examples.pluck(:content).join(' | ')
