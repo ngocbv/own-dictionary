@@ -1,18 +1,19 @@
-%div.row
-  %div.col-lg-6.col-md-6.col-md-offset-3
-    %h1 Dictionary
+%div.container
+  %div.row
+    %div.col.align-self-center
+      %h1 Dictionary
 
-    = form_tag(home_index_path, method: :get, class: 'form-inline') do
-      %input.form-control{"type" => "text", "placeholder" => "Search for...", "aria-label" => "Search for...", "name" => "query"}
-      %button.btn.btn-outline-success{"type" => "submit"} Go!
+      = form_tag(home_index_path, method: :get, class: 'form-inline') do
+        %input.form-control{"type" => "text", "placeholder" => "Search for...", "aria-label" => "Search for...", "name" => "query"}
+        %button.btn.btn-outline-success{"type" => "submit"} Go!
 
-    -# @word = Word.find_by(name: params['query'])
-    -# @pronunciation = word.pronunciation
-    -# @meanings = word.meanings
-    -# @examples = word.examples
-    - if @word
-      %h2= @word.name
-      %span= @pronunciation.try(:phonetic_spelling)
-      - if @meanings.present?
-        - @meanings.each do |meaning|
-          %p= meaning.definition.capitalize
+      -# @word = Word.find_by(name: params['query'])
+      -# @pronunciation = word.pronunciation
+      -# @meanings = word.meanings
+      -# @examples = word.examples
+      - if @word
+        %h2= @word.name
+        %span= @pronunciation.try(:phonetic_spelling)
+        - if @meanings.present?
+          - @meanings.each do |meaning|
+            %p= meaning.definition.capitalize
