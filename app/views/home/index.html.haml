@@ -4,8 +4,9 @@
       %h1 Dictionary
 
       = form_tag(home_index_path, method: :get, class: 'form-inline') do
-        %input.form-control{"type" => "text", "placeholder" => "Search for...", "aria-label" => "Search for...", "name" => "query"}
-        %button.btn.btn-outline-success{"type" => "submit"} Go!
+        %div.row.justify-content-center
+          %input.form-control.col-8{"type" => "text", "placeholder" => "Search for...", "aria-label" => "Search for...", "name" => "query"}
+          %button.btn.btn-outline-success.col-2{"type" => "submit"} Go!
 
       -# @word = Word.find_by(name: params['query'])
       -# @pronunciation = word.pronunciation
