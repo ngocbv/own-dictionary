@@ -1,2 +1,4 @@
 oxford_app_id: '43eec615'
 oxford_app_key: '6d371776aa573119fe47e7fefe700c66'
+MIN_THREADS: 1
+RAILS_MAX_THREADS: 1
