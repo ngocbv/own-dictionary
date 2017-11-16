@@ -162,6 +162,7 @@ GEM
     multi_json (1.12.2)
     multi_test (0.1.2)
     multi_xml (0.5.5)
+    mysql2 (0.4.5)
     nio4r (2.1.0)
     nokogiri (1.8.1)
       mini_portile2 (~> 2.3.0)
@@ -300,6 +301,7 @@ DEPENDENCIES
   jquery-rails
   launchy
   listen (>= 3.0.5, < 3.2)
+  mysql2
   pg
   puma (~> 3.7)
   rails (~> 5.1.4)
@@ -315,5 +317,8 @@ DEPENDENCIES
   uglifier (>= 1.3.0)
   web-console (>= 3.3.0)
 
+RUBY VERSION
+   ruby 2.3.1p112
+
 BUNDLED WITH
-   1.13.6
+   1.14.5
