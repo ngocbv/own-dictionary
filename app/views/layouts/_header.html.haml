@@ -1,0 +1,17 @@
+%nav.navbar.navbar-expand-lg.navbar-light.bg-light
+  %a.navbar-brand{href: root_path} Home
+  #navbarNav
+    %ul.navbar-nav
+      %li.nav-item
+        %a.nav-link{href: '#'} About
+    %ul.nav.justify-content-end
+      %li.nav-item
+        %a.nav-link.active{href: '#'} Active
+      - if user_signed_in?
+        %li.nav-item.dropdown
+          %a.nav-link.dropdown-toggle#navbarDropdown{href: '#', role: 'button', 'data-toggle' =>'dropdown', 'aria-haspopup' => 'true', 'aria-expanded' => 'fase'}
+            = gravatar_for current_user, size: 40
+            %b.caret
+          %div.dropdown-menu{'aria-labelledby' => 'navbarDropdown'}
+            %a.dropdown-item{href: ''} Test
+            %a.dropdown-item{href: edit_user_registration_path} My profile

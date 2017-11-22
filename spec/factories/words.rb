@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :word do
-    name "MyString"
-    updated ""
+    name "MyString1"
+    updated true
   end
 end

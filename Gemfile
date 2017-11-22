@@ -21,10 +21,11 @@ gem 'bootstrap', '~> 4.0.0.beta'
 gem 'haml-rails', '~> 1.0'
 gem 'jquery-rails'
 gem 'mysql2'
+gem 'devise'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  gem 'rspec-rails', '~> 3.5'
+  gem 'rspec-rails', '~> 3.7'
   gem 'faker'
   gem 'factory_girl_rails'
   gem 'simplecov', require: false
