@@ -36,7 +36,8 @@ class OxfordDictionariesService
       end
 
       # Get pronunciation
-      pronunciation = lexicalEntry['entries'][0]['pronunciations'][0]
+      entr = lexicalEntry['entries'][0]
+      pronunciation = entr.has_key?('pronunciations') ? entr['pronunciations'][0] : ''
       Pronunciation.find_or_create_by(word: word, audio_link: pronunciation['audioFile'],
         dialects: pronunciation['dialects'], phonetic_notation: pronunciation['phoneticNotation'],
         phonetic_spelling: pronunciation['phoneticSpelling'])
