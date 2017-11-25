@@ -32,26 +32,26 @@ Users:
   - fullname
   - encrypted_password
 
-FavoriteWords:
-  - user_id
-  - word_id
-
 TranslationHistories:
   - user_id
   - word_id
-  - time: datetime
 
-Sentences:
+FavoriteWords: N/A
+  - user_id
+  - word_id
+
+Sentences: N/A
   - word_id
   - regions: arrays of regions
   - content: text
 
 Synonyms:
   - word_id
-  - dictionary_id
+  - meaning_id
   - content: array of synonyms
 
 Antonyms:
   - word_id
-  - dictionary_id
+  - meaning_id
   - content: array of antonyms
+

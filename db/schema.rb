@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171122141456) do
+ActiveRecord::Schema.define(version: 20171123135155) do
+
+  create_table "antonyms", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "word_id"
+    t.bigint "meaning_id"
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["meaning_id"], name: "index_antonyms_on_meaning_id"
+    t.index ["word_id"], name: "index_antonyms_on_word_id"
+  end
 
   create_table "dictionaries", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
@@ -47,6 +57,16 @@ ActiveRecord::Schema.define(version: 20171122141456) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["word_id"], name: "index_pronunciations_on_word_id"
+  end
+
+  create_table "synonyms", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "word_id"
+    t.bigint "meaning_id"
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["meaning_id"], name: "index_synonyms_on_meaning_id"
+    t.index ["word_id"], name: "index_synonyms_on_word_id"
   end
 
   create_table "translation_histories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -94,10 +114,14 @@ ActiveRecord::Schema.define(version: 20171122141456) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "antonyms", "meanings"
+  add_foreign_key "antonyms", "words"
   add_foreign_key "examples", "meanings"
   add_foreign_key "meanings", "dictionaries"
   add_foreign_key "meanings", "words"
   add_foreign_key "pronunciations", "words"
+  add_foreign_key "synonyms", "meanings"
+  add_foreign_key "synonyms", "words"
   add_foreign_key "translation_histories", "users"
   add_foreign_key "translation_histories", "words"
 end

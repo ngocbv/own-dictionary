@@ -14,24 +14,29 @@ class OxfordDictionariesService
     if response.code == 200
       result = response['results'][0]
       language = result['language']
-      word = Word.create(name: keyword, language: language, updated: true)
+
+      # Create word
+      word = Word.find_by(name: keyword)
       puts word.errors.messages unless word.valid?
 
       lexicalEntry = result['lexicalEntries'][0]
       lexicalEntry['entries'].each do |entry|
         entry['senses'].each do |sense|
-          meaning = Meaning.create(word: word, dictionary: @dictionary, definition: sense['definitions'].join(' | '))
+          # Get meaning
+          meaning = Meaning.find_or_create_by(word: word, dictionary: @dictionary, definition: (sense['definitions'] || []).join(' | '))
 
+          # Get example
           examples = sense['examples'] || []
           examples.each do |example|
-            ex = Example.create(meaning: meaning, content: example['text'])
+            ex = Example.find_or_create_by(meaning: meaning, content: example['text'])
             puts ex.errors.messages unless ex.valid?
           end
         end
       end
 
-      pronunciation = lexicalEntry['pronunciations'][0]
-      Pronunciation.create(word: word, audio_link: pronunciation['audioFile'],
+      # Get pronunciation
+      pronunciation = lexicalEntry['entries'][0]['pronunciations'][0]
+      Pronunciation.find_or_create_by(word: word, audio_link: pronunciation['audioFile'],
         dialects: pronunciation['dialects'], phonetic_notation: pronunciation['phoneticNotation'],
         phonetic_spelling: pronunciation['phoneticSpelling'])
     else
