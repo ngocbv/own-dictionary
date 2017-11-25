@@ -8,6 +8,7 @@ class OxfordDictionariesService
   end
 
   def search(keyword)
+    keyword = keyword.strip.downcase
     response = HTTParty.get("https://od-api.oxforddictionaries.com/api/v1/entries/en/#{keyword}",
       headers: @headers)
 

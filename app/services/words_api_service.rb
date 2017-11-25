@@ -5,6 +5,7 @@ class WordsApiService
   end
 
   def search(keyword)
+    keyword = keyword.strip.downcase
     response = HTTParty.get "https://www.wordsapi.com/mashape/words/#{keyword}?when=2017-11-23T13:20:45.519Z&encrypted=8cfdb28de723929be89207beec58bcb9aeb4280935fe9eb8"
 
     if response.code == 200
