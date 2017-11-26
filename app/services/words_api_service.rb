@@ -23,30 +23,30 @@ class WordsApiService
         examples.each do |example|
           ex = Example.find_or_create_by(meaning: meaning, content: example)
           puts ex.errors.messages unless ex.valid?
+        end
 
-          # Get synonyms
-          synonym = Synonym.find_by word: word, meaning: meaning
-          if synonym
-            content = synonym.content
-            content << example['synonyms']
-            content.flatten.uniq
-            synonym.update content: content
-          else
-            syn = Synonym.find_or_create_by word: word, meaning: meaning, content: example['synonyms']
-            puts syn.errors.messages unless syn.valid?
-          end
+        # Get synonyms
+        synonym = Synonym.find_by word: word, meaning: meaning
+        if synonym
+          content = synonym.content
+          content << result['synonyms']
+          content.flatten.compact.uniq
+          synonym.update content: content
+        elsif result['synonyms'].present?
+          syn = Synonym.find_or_create_by word: word, meaning: meaning, content: result['synonyms']
+          puts syn.errors.messages unless syn.valid?
+        end
 
-          # Get antonyms
-          antonym = Antonym.find_by word: word, meaning: meaning
-          if antonym
-            content = antonym.content
-            content << example['antonyms']
-            content.flatten.uniq
-            antonym.update content: content
-          else
-            anto = Antonym.find_or_create_by word: word, meaning: meaning, content: example['antonyms']
-            puts anto.errors.messages unless anto.valid?
-          end
+        # Get antonyms
+        antonym = Antonym.find_by word: word, meaning: meaning
+        if antonym
+          content = antonym.content
+          content << result['antonyms']
+          content.flatten.uniq
+          antonym.update content: content
+        elsif result['synonyms'].present?
+          anto = Antonym.find_or_create_by word: word, meaning: meaning, content: result['antonyms']
+          puts anto.errors.messages unless anto.valid?
         end
       end
 

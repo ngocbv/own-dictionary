@@ -14,7 +14,7 @@ class HomeController < ApplicationController
     @word = word || Word.find_by(name: query_word)
     if @word
       @pronunciation = @word.pronunciation
-      @meanings = @word.meanings.includes(:examples)
+      @meanings = @word.meanings.includes(:examples, :synonyms, :antonyms)
       TranslationHistory.find_or_create_by user: current_user, word: @word if current_user
     end
   end
