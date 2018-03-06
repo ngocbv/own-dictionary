@@ -12,11 +12,11 @@ class SubmittedScriptsController < ApplicationController
   end
 
   def edit
-    @submitted_script = SubmittedScript.find_by params[:id]
+    @submitted_script = SubmittedScript.find params[:id]
   end
 
   def update
-    script = SubmittedScript.find_by params[:id]
+    script = SubmittedScript.find params[:id]
     script.update submitted_script_params
 
     if script.save
