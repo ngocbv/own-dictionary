@@ -1,0 +1,19 @@
+= form_for [@submitted_script.listening_lesson ,@submitted_script] do |f|
+  - if @submitted_script.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@submitted_script.errors.count, "error")} prohibited this submitted_script from being saved:"
+      %ul
+        - @submitted_script.errors.full_messages.each do |message|
+          %li= message
+
+  = f.hidden_field :user_id
+  = f.hidden_field :listening_lesson_id
+  .field
+    %audio.listening-audio{ controls: '' }
+      %source{ src: @submitted_script.listening_lesson.link, type: 'audio/mpeg' }
+      Your browser does not support the audio element.
+  .field.form-group
+    = f.label :content
+    = f.text_area :content, class: 'form-control'
+  .actions
+    = f.submit 'Save', class: 'btn btn-success'

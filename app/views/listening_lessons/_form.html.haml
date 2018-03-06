@@ -1,0 +1,19 @@
+= form_for @listening_lesson do |f|
+  - if @listening_lesson.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@listening_lesson.errors.count, "error")} prohibited this listening_lesson from being saved:"
+      %ul
+        - @listening_lesson.errors.full_messages.each do |message|
+          %li= message
+
+  .field.form-group
+    = f.label :name
+    = f.text_field :name, class: 'form-control'
+  .field.form-group
+    = f.label :link
+    = f.text_field :link, class: 'form-control'
+  .field.form-group
+    = f.label :script
+    = f.text_area :script, class: 'form-control'
+  .actions
+    = f.submit 'Save', class: 'btn btn-success'

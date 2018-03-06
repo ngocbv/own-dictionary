@@ -1,0 +1,26 @@
+%h1 Listening Lessons
+
+%table
+  %thead
+    %tr
+      %th Name
+      %th Link
+      %th
+      %th
+      %th
+  %tbody
+    - @listening_lessons.each do |listening_lesson|
+      %tr
+        %td= listening_lesson.name
+        %td= listening_lesson.link
+        %td= link_to 'Show', listening_lesson
+        %td= link_to 'Edit', edit_listening_lesson_path(listening_lesson)
+        %td
+          - script = listening_lesson.submitted_scripts.find_by(user: current_user)
+          - if script
+            = link_to 'Re-listen', edit_listening_lesson_submitted_script_path(listening_lesson, script)
+          - else
+            = link_to 'Listen', new_listening_lesson_submitted_script_path(listening_lesson)
+%br
+
+= link_to 'New Listening lesson', new_listening_lesson_path
