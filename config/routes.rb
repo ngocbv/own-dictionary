@@ -3,4 +3,8 @@ Rails.application.routes.draw do
   root 'home#index'
 
   get 'home/index'
+
+  resources :listening_lessons do
+    resources :submitted_scripts
+  end
 end

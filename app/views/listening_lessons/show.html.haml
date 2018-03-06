@@ -1,0 +1,23 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @listening_lesson.name
+%p
+  %audio.listening-audio{ controls: '' }
+    %source{ src: @listening_lesson.link, type: 'audio/mpeg' }
+    Your browser does not support the audio element.
+%p
+  %b Script:
+  = @listening_lesson.script
+
+%h3 Submitted scripts from users
+- @listening_lesson.submitted_scripts.each do |script|
+  %span.italic-text
+    Submitted by
+    = script.user.fullname || script.user.username
+  %p= script.content
+
+= link_to 'Edit', edit_listening_lesson_path(@listening_lesson)
+\|
+= link_to 'Back', listening_lessons_path

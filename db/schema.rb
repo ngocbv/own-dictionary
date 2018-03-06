@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171123135155) do
+ActiveRecord::Schema.define(version: 20180305172437) do
 
   create_table "antonyms", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.bigint "word_id"
@@ -38,6 +38,23 @@ ActiveRecord::Schema.define(version: 20171123135155) do
     t.index ["meaning_id"], name: "index_examples_on_meaning_id"
   end
 
+  create_table "favorites", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "user_id"
+    t.bigint "word_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_favorites_on_user_id"
+    t.index ["word_id"], name: "index_favorites_on_word_id"
+  end
+
+  create_table "listening_lessons", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "name"
+    t.string "link"
+    t.text "script"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "meanings", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.bigint "word_id"
     t.bigint "dictionary_id"
@@ -57,6 +74,16 @@ ActiveRecord::Schema.define(version: 20171123135155) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["word_id"], name: "index_pronunciations_on_word_id"
+  end
+
+  create_table "submitted_scripts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "user_id"
+    t.bigint "listening_lesson_id"
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["listening_lesson_id"], name: "index_submitted_scripts_on_listening_lesson_id"
+    t.index ["user_id"], name: "index_submitted_scripts_on_user_id"
   end
 
   create_table "synonyms", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -117,9 +144,13 @@ ActiveRecord::Schema.define(version: 20171123135155) do
   add_foreign_key "antonyms", "meanings"
   add_foreign_key "antonyms", "words"
   add_foreign_key "examples", "meanings"
+  add_foreign_key "favorites", "users"
+  add_foreign_key "favorites", "words"
   add_foreign_key "meanings", "dictionaries"
   add_foreign_key "meanings", "words"
   add_foreign_key "pronunciations", "words"
+  add_foreign_key "submitted_scripts", "listening_lessons"
+  add_foreign_key "submitted_scripts", "users"
   add_foreign_key "synonyms", "meanings"
   add_foreign_key "synonyms", "words"
   add_foreign_key "translation_histories", "users"
