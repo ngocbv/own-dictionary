@@ -10,5 +10,7 @@
 
   %body
     %div.container
-      = render 'layouts/header'
-      = yield
+      %div.header-container
+        = render 'layouts/header'
+      %div.body-container
+        = yield
