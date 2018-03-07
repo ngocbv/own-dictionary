@@ -1,4 +1,6 @@
 class SubmittedScriptsController < ApplicationController
+  before_action :authenticate_user!
+
   def new
     @submitted_script = SubmittedScript.new user: current_user, listening_lesson_id: params[:listening_lesson_id]
   end

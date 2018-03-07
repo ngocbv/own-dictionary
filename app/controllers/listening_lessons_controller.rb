@@ -1,4 +1,5 @@
 class ListeningLessonsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_listening_lesson, only: [:show, :edit, :update, :destroy]
 
   # GET /listening_lessons
