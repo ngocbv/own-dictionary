@@ -4,6 +4,8 @@
   %b Name:
   = @listening_lesson.name
 %p
+  = @listening_lesson.link
+%p
   %audio.listening-audio{ controls: '' }
     %source{ src: @listening_lesson.link, type: 'audio/mpeg' }
     Your browser does not support the audio element.

@@ -4,7 +4,6 @@
   %thead
     %tr
       %th Name
-      %th Link
       %th
       %th
       %th
@@ -12,7 +11,6 @@
     - @listening_lessons.each do |listening_lesson|
       %tr
         %td= listening_lesson.name
-        %td= listening_lesson.link
         %td= link_to 'Show', listening_lesson
         %td= link_to 'Edit', edit_listening_lesson_path(listening_lesson)
         %td
