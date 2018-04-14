@@ -21,7 +21,7 @@ gem 'bootstrap', '~> 4.0.0'
 gem 'haml-rails', '~> 1.0'
 gem 'jquery-rails'
 gem 'mysql2'
-gem 'devise'
+gem 'devise', '~> 4.4.3'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

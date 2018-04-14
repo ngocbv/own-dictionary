@@ -12,7 +12,10 @@
 
 ActiveRecord::Schema.define(version: 20180305172437) do
 
-  create_table "antonyms", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "antonyms", force: :cascade do |t|
     t.bigint "word_id"
     t.bigint "meaning_id"
     t.text "content"
@@ -22,7 +25,7 @@ ActiveRecord::Schema.define(version: 20180305172437) do
     t.index ["word_id"], name: "index_antonyms_on_word_id"
   end
 
-  create_table "dictionaries", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "dictionaries", force: :cascade do |t|
     t.string "name"
     t.string "homepage"
     t.string "api_homepage"
@@ -30,7 +33,7 @@ ActiveRecord::Schema.define(version: 20180305172437) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "examples", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "examples", force: :cascade do |t|
     t.bigint "meaning_id"
     t.text "content"
     t.datetime "created_at", null: false
@@ -38,16 +41,7 @@ ActiveRecord::Schema.define(version: 20180305172437) do
     t.index ["meaning_id"], name: "index_examples_on_meaning_id"
   end
 
-  create_table "favorites", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.bigint "user_id"
-    t.bigint "word_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_favorites_on_user_id"
-    t.index ["word_id"], name: "index_favorites_on_word_id"
-  end
-
-  create_table "listening_lessons", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "listening_lessons", force: :cascade do |t|
     t.string "name"
     t.string "link"
     t.text "script"
@@ -55,7 +49,7 @@ ActiveRecord::Schema.define(version: 20180305172437) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "meanings", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "meanings", force: :cascade do |t|
     t.bigint "word_id"
     t.bigint "dictionary_id"
     t.text "definition"
@@ -65,7 +59,7 @@ ActiveRecord::Schema.define(version: 20180305172437) do
     t.index ["word_id"], name: "index_meanings_on_word_id"
   end
 
-  create_table "pronunciations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "pronunciations", force: :cascade do |t|
     t.bigint "word_id"
     t.string "audio_link"
     t.string "dialects"
@@ -76,7 +70,7 @@ ActiveRecord::Schema.define(version: 20180305172437) do
     t.index ["word_id"], name: "index_pronunciations_on_word_id"
   end
 
-  create_table "submitted_scripts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "submitted_scripts", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "listening_lesson_id"
     t.text "content"
@@ -86,7 +80,7 @@ ActiveRecord::Schema.define(version: 20180305172437) do
     t.index ["user_id"], name: "index_submitted_scripts_on_user_id"
   end
 
-  create_table "synonyms", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "synonyms", force: :cascade do |t|
     t.bigint "word_id"
     t.bigint "meaning_id"
     t.text "content"
@@ -96,7 +90,7 @@ ActiveRecord::Schema.define(version: 20180305172437) do
     t.index ["word_id"], name: "index_synonyms_on_word_id"
   end
 
-  create_table "translation_histories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "translation_histories", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "word_id"
     t.datetime "created_at", null: false
@@ -105,7 +99,7 @@ ActiveRecord::Schema.define(version: 20180305172437) do
     t.index ["word_id"], name: "index_translation_histories_on_word_id"
   end
 
-  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "username", default: "", null: false
@@ -133,7 +127,7 @@ ActiveRecord::Schema.define(version: 20180305172437) do
     t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
   end
 
-  create_table "words", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "words", force: :cascade do |t|
     t.string "name"
     t.boolean "updated", default: false
     t.string "language", default: "en"
@@ -144,8 +138,6 @@ ActiveRecord::Schema.define(version: 20180305172437) do
   add_foreign_key "antonyms", "meanings"
   add_foreign_key "antonyms", "words"
   add_foreign_key "examples", "meanings"
-  add_foreign_key "favorites", "users"
-  add_foreign_key "favorites", "words"
   add_foreign_key "meanings", "dictionaries"
   add_foreign_key "meanings", "words"
   add_foreign_key "pronunciations", "words"
