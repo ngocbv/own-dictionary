@@ -4,14 +4,16 @@
     %ul.navbar-nav
       %li.nav-item
         = link_to 'Listening', listening_lessons_path, class: 'nav-link'
-    %ul.nav.justify-content-end
-      %li.nav-item
-        %a.nav-link.active{href: '#'} Active
+      %li.nav-item.justify-content-end
       - if user_signed_in?
         %li.nav-item.dropdown
           %a.nav-link.dropdown-toggle#navbarDropdown{href: '#', role: 'button', 'data-toggle' =>'dropdown', 'aria-haspopup' => 'true', 'aria-expanded' => 'fase'}
-            = gravatar_for current_user, size: 40
+            = gravatar_for current_user, size: 25
             %b.caret
           %div.dropdown-menu{'aria-labelledby' => 'navbarDropdown'}
             %a.dropdown-item{href: ''} Test
             %a.dropdown-item{href: edit_user_registration_path} My profile
+            = link_to t(:sign_out), destroy_user_session_path, method: :delete, class: 'dropdown-item'
+      - else
+        %li.nav-item
+          = link_to t(:sign_in), new_user_session_path, class: 'nav-link'
