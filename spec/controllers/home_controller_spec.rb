@@ -12,12 +12,11 @@ RSpec.describe HomeController, type: :controller do
       let(:keyword) { Faker::Lorem.word }
 
       before do
-        byebug
         get :index, params: { q: keyword }
       end
 
       context "had a word is updated" do
-        let!(:word) { FactoryGirl.create :word, name: keyword, updated: false }
+        let!(:word) { create :word, name: keyword, updated: false }
 
         it "call Oxford API to translate" do
           expect_any_instance_of(OxfordDictionariesService).to receive(:search).with(keyword)
@@ -31,7 +30,7 @@ RSpec.describe HomeController, type: :controller do
       end
 
       context "had a keyword with that name but it's updated" do
-        let(:word) { FactoryGirl.create :word, name: keyword, updated: true }
+        let(:word) { create :word, name: keyword, updated: true }
 
         it "did not call OxfordDictionariesService API to translate" do
           expect_any_instance_of(OxfordDictionariesService).not_to receive(:search)

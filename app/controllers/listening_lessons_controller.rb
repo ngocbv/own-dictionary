@@ -5,7 +5,7 @@ class ListeningLessonsController < ApplicationController
   # GET /listening_lessons
   # GET /listening_lessons.json
   def index
-    @listening_lessons = ListeningLesson.all.includes(:submitted_scripts).order(:name)
+    @listening_lessons = ListeningLesson.all.order(:name)
   end
 
   # GET /listening_lessons/1
