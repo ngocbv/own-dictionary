@@ -36,6 +36,7 @@ group :development do
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'bullet'
 end
 
 group :test do
@@ -47,6 +48,7 @@ group :test do
   gem 'capybara-screenshot'
   gem 'fuubar' # progress bar when run rspec
   gem 'rails-controller-testing'
+  gem 'shoulda-matchers', '~> 3.1'
 end
 
 group :production do
