@@ -1,7 +1,7 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :listening_lesson do
-    name "MyString"
-    link "MyString"
-    script "MyText"
+    name { Faker::Lorem.word }
+    link { Faker::Internet.url }
+    script { Faker::Lorem.sentence }
   end
 end

@@ -1,6 +1,6 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :word do
-    name "MyString1"
+    name { Faker::Lorem.word }
     updated true
   end
 end

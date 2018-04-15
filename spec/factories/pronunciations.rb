@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :pronunciation do
     word nil
     audio_link "MyString"

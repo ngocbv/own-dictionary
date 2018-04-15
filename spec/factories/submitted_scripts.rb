@@ -1,6 +1,6 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :submitted_script do
-    user nil
-    listening_lesson nil
+    user
+    listening_lesson
   end
 end

@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :meaning do
     word nil
     dictionary nil
