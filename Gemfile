@@ -23,6 +23,7 @@ gem 'jquery-rails'
 gem 'mysql2'
 gem 'devise', '~> 4.4.3'
 gem 'airbrake-ruby', '~> 2.8'
+gem 'metamagic'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

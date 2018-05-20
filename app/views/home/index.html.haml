@@ -1,3 +1,6 @@
+- meta title: 'Your own dictionary',
+  description: 'Create your own dictionary',
+  keywords: %w(dictionary with-synonym with-antonym)
 %div.row
   %div.col.align-self-center
     %h1 Dictionary
@@ -7,9 +10,6 @@
         %input.form-control.col-8{"type" => "text", "placeholder" => "Search for...", "aria-label" => "Search for...", "name" => "q"}
         %button.btn.btn-outline-success.search-button.col-2{"type" => "submit"} Go!
 
-     -# @word = Word.find_by(name: params['query'])
-    -# @pronunciation = word.pronunciation
-    -# @meanings = word.meanings
     - if @word
       %h2= @word.name
       %span= @pronunciation.try(:phonetic_spelling)
