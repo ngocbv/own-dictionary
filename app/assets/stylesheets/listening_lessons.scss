@@ -1,8 +1,18 @@
-.listening-audio {
-	width: 100%;
-}
+.lesson-index {
+	table.listening-table {
+		float: left;
+		width: 45%;
+	}
 
+	table:nth-child(1) {
+	  margin-right: 10%;
+	}
 
-.script-content {
-  height: 200px;
+	.listening-audio {
+		width: 100%;
+	}
+
+	.script-content {
+	  height: 200px;
+	}
 }
