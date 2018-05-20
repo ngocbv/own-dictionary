@@ -24,6 +24,7 @@ gem 'mysql2'
 gem 'devise', '~> 4.4.3'
 gem 'airbrake-ruby', '~> 2.8'
 gem 'metamagic'
+gem 'gretel'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
