@@ -40,6 +40,7 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.5.2)
       public_suffix (>= 2.0.2, < 4.0)
+    airbrake-ruby (2.8.3)
     arel (8.0.0)
     autoprefixer-rails (8.2.0)
       execjs
@@ -304,6 +305,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  airbrake-ruby (~> 2.8)
   bootstrap (~> 4.0.0)
   bullet
   byebug

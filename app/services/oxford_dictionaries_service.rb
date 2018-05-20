@@ -1,8 +1,8 @@
 class OxfordDictionariesService
   def initialize
     @headers = {
-      app_id: ENV['oxford_app_id'],
-      app_key: ENV['oxford_app_key']
+      app_id: ENV['OXFORD_APP_ID'],
+      app_key: ENV['OXFORD_APP_KEY']
     }
     @dictionary = Dictionary.find_by(name: 'Oxford Dictionaries')
   end

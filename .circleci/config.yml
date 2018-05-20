@@ -1,0 +1,54 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/ruby:2.5.0-node-browsers
+        environment:
+          PG_HOST: localhost
+          PG_USER: ngocbv
+          RAILS_ENV: test
+          RACK_ENV: test
+          DATABASE_URL: "postgres://ngocbv@localhost:5432/own_dictionary_test"
+      - image: postgres:9.6.2-alpine
+        environment:
+          POSTGRES_USER: ngocbv
+          POSTGRES_DB: own_dictionary_test
+    working_directory: ~/own_dictionary
+
+    steps:
+      - checkout
+
+      - run:
+          name: Init config files
+          command: |
+            mv .circleci/config/database.yml config/database.yml
+
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "Gemfile.lock" }}
+          - v1-dependencies-
+
+      - run:
+          name: install dependencies
+          command: |
+            bundle install --jobs=4 --retry=3 --path vendor/bundle
+
+      - save_cache:
+          paths:
+            - ./vendor/bundle
+          key: v1-dependencies-{{ checksum "Gemfile.lock" }}
+
+      - run:
+          name: Wait for db
+          command: dockerize -wait tcp://localhost:5432 -timeout 1m
+
+      - run:
+          name: Database setup
+          command: |
+            bin/rails db:create
+            bin/rails db:schema:load --trace
+
+      - run:
+          name: run tests
+          command: |
+            bundle exec rspec
