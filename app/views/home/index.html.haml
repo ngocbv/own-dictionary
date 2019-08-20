@@ -9,7 +9,6 @@
       %div.row.justify-content-start.search-word
         %input.form-control.col-8{"type" => "text", "placeholder" => "Search for...", "aria-label" => "Search for...", "name" => "q"}
         %button.btn.btn-outline-success.search-button.col-2{"type" => "submit"} Go!
-
     - if @word
       %h2= @word.name
       %span= @pronunciation.try(:phonetic_spelling)
