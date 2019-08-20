@@ -5,7 +5,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-ruby '2.5.0'
+ruby '2.6.3'
 
 gem 'rails', '~> 5.1.4'
 gem 'puma', '~> 3.7'
@@ -20,7 +20,6 @@ gem 'figaro'
 gem 'bootstrap', '~> 4.0.0'
 gem 'haml-rails', '~> 1.0'
 gem 'jquery-rails'
-gem 'mysql2'
 gem 'devise', '~> 4.4.3'
 gem 'airbrake-ruby', '~> 2.8'
 gem 'metamagic'
@@ -54,8 +53,6 @@ group :test do
   gem 'shoulda-matchers', '~> 3.1'
 end
 
-group :production do
-  gem 'pg'
-end
+gem 'pg'
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
