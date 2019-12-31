@@ -15,4 +15,5 @@
 //= require popper
 //= require turbolinks
 //= require bootstrap
+//= require diff/dist/diff.min
 //= require_tree .

@@ -2,6 +2,10 @@
   "name": "own-dictionary",
   "private": true,
   "dependencies": {
+    "diff": "^4.0.1",
     "jquery": "^3.2.1"
+  },
+  "engines": {
+    "node": "10.x"
   }
 }
