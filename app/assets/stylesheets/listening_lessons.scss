@@ -16,3 +16,21 @@
 	  height: 200px;
 	}
 }
+
+.user-script {
+  padding-bottom: 25px;
+
+  .script-content {
+    display: none;
+  }
+
+  .text-added {
+    color: green;
+  }
+
+  .text-removed {
+    color: red;
+    padding-right: 3px;
+    text-decoration: line-through;
+  }
+}

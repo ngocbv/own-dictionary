@@ -1,6 +1,8 @@
-// Place all the styles related to the home controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+body {
+  font-size: 1.125rem;
+  font-family: Lato,sans-serif;
+}
+
 .examples, .synonyms, .antonyms {
   font-style: italic;
   color: #585757;
@@ -21,7 +23,7 @@
 }
 
 .body-container {
-  padding-top: 15px;
+  padding: 15px 0 100px 0;
 
   .breadcrumbs {
     margin-bottom: 20px;

@@ -18,38 +18,36 @@
 
 %h3 Submitted scripts from users
 - @listening_lesson.submitted_scripts.each do |script|
-  %span.italic-text
-    Submitted by
-    = script.user.fullname || script.user.username
-  %p.user-script= script.content
+  .user-script
+    %span.italic-text
+      Submitted by
+      = script.user.fullname.presence || script.user.username.presence || script.user.email
+    .script
+      %p.script-content= script.content
 
 = link_to 'Edit', edit_listening_lesson_path(@listening_lesson)
 \|
 = link_to 'Back', listening_lessons_path
 
 :javascript
-  var one = 'beep boop',
-  other = 'beep boob blah',
-  color = '',
-  span = null;
+  $(document).ready(function() {
+    var color = '', span = null;
 
-  const answerScript = $(".answer-script")[0].textContent;
-  $(".user-script").each(function(index, script) {
-    const userScript = script.textContent;
-    var diff = Diff.diffWordsWithSpace(answerScript, userScript),
-    display = document.getElementById('display'),
-    fragment = document.createDocumentFragment();
+    const answerScript = $(".answer-script")[0].textContent;
+    $(".user-script .script").each(function(index, script) {
+      const userScript = $(script).find(".script-content").text();
+      var diff = Diff.diffWordsWithSpace(userScript, answerScript, { ignoreCase: true }),
+      display = document.getElementById('display'),
+      fragment = document.createDocumentFragment();
 
-    diff.forEach(function(part){
-      color = part.added ? 'green' :
-      part.removed ? 'red' : 'grey';
-      span = document.createElement('span');
-      span.style.color = color;
-      span.appendChild(document
-      .createTextNode(part.value));
-      fragment.appendChild(span);
+      diff.forEach(function(part){
+        className = part.added ? 'text-added' : part.removed ? 'text-removed' : '';
+        span = document.createElement('span');
+        span.className = className;
+        span.appendChild(document.createTextNode(part.value));
+        fragment.appendChild(span);
+      });
+
+      script.appendChild(fragment);
     });
-
-    script.appendChild(fragment);
   });
-
