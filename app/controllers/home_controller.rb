@@ -15,7 +15,14 @@ class HomeController < ApplicationController
     if @word
       @pronunciation = @word.pronunciation
       @meanings = @word.meanings.includes(:examples, :synonyms, :antonyms)
-      TranslationHistory.find_or_create_by user: current_user, word: @word if current_user
+      if current_user
+        history = TranslationHistory.find_by user: current_user, word: @word
+        if history
+          history.update_columns translated_count: history.translated_count + 1
+        else
+          TranslationHistory.create user: current_user, word: @word
+        end
+      end
     end
   end
 end
