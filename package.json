@@ -3,7 +3,7 @@
   "private": true,
   "dependencies": {
     "diff": "^4.0.1",
-    "jquery": "^3.2.1"
+    "jquery": "^3.4.0"
   },
   "engines": {
     "node": "10.x"
