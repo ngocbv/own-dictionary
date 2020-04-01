@@ -12,8 +12,11 @@
     - if @word
       %h2= @word.name
       %span= @pronunciation.try(:phonetic_spelling)
-      - if @meanings.present?
-        %ul
+      %ul
+        %li= @word.vn_meanings.first(4).join(", ")
+        %image{"src" => @word.images[0]}
+        %image{"src" => @word.images[1]}
+        - if @meanings.present?
           - @meanings.each do |meaning|
             %li= meaning.definition.capitalize
             %div.examples= meaning.examples.pluck(:content).map(&:capitalize).join(' | ')

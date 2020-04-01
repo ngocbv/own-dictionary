@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200215152720) do
+ActiveRecord::Schema.define(version: 20200401035126) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -148,6 +148,8 @@ ActiveRecord::Schema.define(version: 20200215152720) do
     t.string "language", default: "en"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "vn_meanings", default: [], array: true
+    t.text "images", default: [], array: true
   end
 
   add_foreign_key "antonyms", "meanings"
