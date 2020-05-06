@@ -20,16 +20,17 @@
           - @meanings.each do |meaning|
             %li= meaning.definition.capitalize
             %div.examples= meaning.examples.pluck(:content).map(&:capitalize).join(' | ')
-            - if meaning.synonyms.present?
+            - if synonyms = meaning.synonyms.pluck(:content).flatten.join(', ') && synonyms.present?
               .synonyms
                 Synonyms:
-                = meaning.synonyms.pluck(:content).flatten.join(', ')
-            - if meaning.antonyms.present?
+                = synonym
+            - if antonyms = meaning.antonyms.pluck(:content).flatten.join(', ') && antonyms.present?
               .antonyms
                 Antonyms:
-                = meaning.antonyms.pluck(:content).flatten.join(', ')
+                = antonyms
 
-    <br />
+    %br
+    %h2 Typical words
     - if @typical_words
       %ul
         - @typical_words.each do |word|
