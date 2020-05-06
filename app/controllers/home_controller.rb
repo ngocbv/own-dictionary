@@ -24,5 +24,8 @@ class HomeController < ApplicationController
         end
       end
     end
+    if current_user
+      @typical_words = Word.joins(:translation_histories).limit(15).order("translation_histories.translated_count desc").uniq
+    end
   end
 end

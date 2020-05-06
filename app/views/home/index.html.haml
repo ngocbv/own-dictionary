@@ -28,3 +28,9 @@
               .antonyms
                 Antonyms:
                 = meaning.antonyms.pluck(:content).flatten.join(', ')
+
+    <br />
+    - if @typical_words
+      %ul
+        - @typical_words.each do |word|
+          %li= "#{word.name} /#{word.pronunciation.try(:phonetic_spelling)}/"
