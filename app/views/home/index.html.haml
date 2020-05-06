@@ -24,7 +24,7 @@
             - if synonyms.present?
               .synonyms
                 Synonyms:
-                = synonym
+                = synonyms
             - antonyms = meaning.antonyms.pluck(:content).flatten.join(', ')
             - if antonyms.present?
               .antonyms
