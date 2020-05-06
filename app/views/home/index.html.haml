@@ -20,11 +20,13 @@
           - @meanings.each do |meaning|
             %li= meaning.definition.capitalize
             %div.examples= meaning.examples.pluck(:content).map(&:capitalize).join(' | ')
-            - if synonyms = meaning.synonyms.pluck(:content).flatten.join(', ') && synonyms.present?
+            - synonyms = meaning.synonyms.pluck(:content).flatten.join(', ')
+            - if synonyms.present?
               .synonyms
                 Synonyms:
                 = synonym
-            - if antonyms = meaning.antonyms.pluck(:content).flatten.join(', ') && antonyms.present?
+            - antonyms = meaning.antonyms.pluck(:content).flatten.join(', ')
+            - if antonyms.present?
               .antonyms
                 Antonyms:
                 = antonyms
