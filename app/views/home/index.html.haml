@@ -14,8 +14,8 @@
       %span= @pronunciation.try(:phonetic_spelling)
       %ul
         %li= @word.vn_meanings.first(4).join(", ")
-        %image{"src" => @word.images[0], "width" => "400"}
-        %image{"src" => @word.images[1], "width" => "400"}
+        %img.img-fluid{"src" => @word.images[0], "width" => "400"}
+        %img.img-fluid{"src" => @word.images[1], "width" => "400"}
         - if @meanings.present?
           - @meanings.each do |meaning|
             %li= meaning.definition.capitalize
