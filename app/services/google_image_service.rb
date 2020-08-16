@@ -5,7 +5,7 @@ class GoogleImageService
     begin
       # urls = ["https://www.google.com/search?q=#{keyword}&source=lnms&tbm=isch", "https://www.google.com.vn/search?q=#{keyword}&tbm=isch&start=0&tbs=iar:s", "https://www.google.com.vn/search?q=#{keyword}&tbm=isch&start=20&tbs=iar:s", "https://www.google.com.vn/search?q=#{keyword}&tbm=isch&start=40&tbs=iar:s","https://www.google.com.vn/search?q=#{keyword}&tbm=isch&start=60&tbs=iar:s","https://www.google.com.vn/search?q=#{keyword}&tbm=isch&start=80&tbs=iar:s","https://www.google.com.vn/search?q=#{keyword}&tbm=isch&start=100&tbs=iar:s", "https://www.google.com.vn/search?q=#{keyword}&tbm=isch&start=120&tbs=iar:s", "https://www.google.com.vn/search?q=#{keyword}&tbm=isch&start=140&tbs=iar:s"]
       urls = ["https://www.google.com/search?q=#{keyword}&source=lnms&tbm=isch"]
-      urls.each  do |item|
+      urls.each do |item|
         response = Faraday.get item
         html = response.body.force_encoding('UTF-8')
 

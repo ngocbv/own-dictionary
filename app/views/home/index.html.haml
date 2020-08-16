@@ -36,4 +36,6 @@
     - if @typical_words
       %ul
         - @typical_words.each do |word|
-          %li= "#{word.name} /#{word.pronunciation.try(:phonetic_spelling)}/"
+          %li
+            %span= link_to word.name, home_index_path(q: word.name)
+            %span= "/#{word.pronunciation.try(:phonetic_spelling)}/"
